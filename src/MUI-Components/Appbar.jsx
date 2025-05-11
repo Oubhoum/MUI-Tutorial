@@ -1,5 +1,3 @@
-import React from 'react'
-
 import {
   AppBar,
   Toolbar,
@@ -35,10 +33,6 @@ const Appbar = ({drawerWidth}) => {
             >
                 My expenses
             </Link>
-            {/* 
-            <Avatar>H</Avatar>
-            <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-            <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar> */}
 
             <Typography sx={{mr: 3}} variant="body1" color="inherit">Abdelaziz OUBHOUM</Typography>
             <Avatar alt="Remy Sharp" src="https://mui.com/static/images/avatar/1.jpg" />

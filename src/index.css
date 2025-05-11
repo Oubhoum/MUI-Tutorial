@@ -8,3 +8,8 @@
   background-color: royalblue;
   color: white;
 }
+
+.border {
+  border: 5px solid red;
+}
+

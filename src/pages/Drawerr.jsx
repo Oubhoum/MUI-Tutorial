@@ -1,5 +1,4 @@
 import {
-  Toolbar,
   Drawer,
   Divider,
   List,
@@ -7,6 +6,8 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useTheme,
+  IconButton,
 } from '@mui/material';
 
 import HomeIcon from '@mui/icons-material/Home';
@@ -15,11 +16,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
+import { Brightness4, Brightness7 } from '@mui/icons-material';
 
 
-const Drawerr = ({drawerWidth}) => {
+const Drawerr = ({drawerWidth, setMyMode}) => {
 
   const navigate = useNavigate();
+  const myTheme = useTheme();
 
   return (
     <div>
@@ -36,10 +39,39 @@ const Drawerr = ({drawerWidth}) => {
           variant="permanent"
           anchor="left"
         >
-          <Toolbar />
-          <Divider />
+
+
 
           <List>
+
+            <ListItem
+                disablePadding
+                sx={{
+                    display : "flex",
+                    justifyContent : "center",
+                    mb : "15px"
+                  }}
+                >
+            
+              <IconButton
+                  onClick={() => {
+                    // localStorage.setItem("currentMode",
+                    //   myTheme.palette.mode === "dark" ? "light" : "dark")
+                    setMyMode(myTheme.palette.mode === "light" ? "dark" : "light");
+                  }}
+                  color="inherit"
+                >
+                  {myTheme.palette.mode === "dark" ? (
+                    <Brightness7 sx={{ color: "orange" }} />
+                  ) : (
+                    <Brightness4 />
+                  )}
+              </IconButton>
+
+            </ListItem>
+
+            <Divider />
+
 
               <ListItem disablePadding>
                 <ListItemButton onClick={() => { navigate("/")}}>
