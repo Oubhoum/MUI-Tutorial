@@ -7,14 +7,13 @@ import { ChevronRight, Scale } from "@mui/icons-material";
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(theme.palette.abdu.main),
-  backgroundColor: purple[500],
+  color: theme.palette.getContrastText(purple[500]),
+  backgroundColor: theme.palette.ali.main,
   '&:hover': {
-    backgroundColor: purple[300],
+    backgroundColor: theme.palette.ali.main,
     scale : "1.1"
   },
 }));
-
 
 const Create = () => {
   return (

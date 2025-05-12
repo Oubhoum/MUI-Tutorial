@@ -1,23 +1,36 @@
+import { Menu } from '@mui/icons-material';
 import {
   AppBar,
   Toolbar,
   Link,
   Avatar,
-  Typography,
+  Typography, IconButton,
 } from '@mui/material';
 
 
 
-const Appbar = ({drawerWidth}) => {
+const Appbar = ({drawerWidth, showDrawer}) => {
   return (
     <div>
         
         <AppBar
-            sx={{ width: `calc(100% - ${drawerWidth}px)`,
-            ml: `${drawerWidth}px` }} position="static"
+            sx={{ width: {sm : `calc(100% - ${drawerWidth}px)`},
+                ml: {xs : 0, sm : `${drawerWidth}px`},
+            }}
+            
+            position="static"
             >
         <Toolbar>
-
+            <IconButton
+                    onClick={() => {
+                        showDrawer()
+                    }}
+                    aria-label=""
+                    color="inherit"
+                    sx={{display : {sm : "none"}, mr : "15px"}}
+                    >
+              <Menu/>
+            </IconButton>
             <Link
                 underline='none'
                 color='inherit'

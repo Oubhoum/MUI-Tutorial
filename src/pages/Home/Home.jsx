@@ -5,6 +5,8 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 const Home = () => {
 
+  // const theme = useTheme();
+
   return (
     <Box>
 
@@ -48,7 +50,7 @@ const Home = () => {
           }}/>
         </IconButton>
       </Paper>
-  
+
     </Box>
   )
 }
