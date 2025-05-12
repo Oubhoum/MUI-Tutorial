@@ -3,22 +3,17 @@ import {
   Divider,
   List,
   ListItem,
+  useTheme,
+  IconButton,
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  useTheme,
-  IconButton,
 } from '@mui/material';
 
-import HomeIcon from '@mui/icons-material/Home';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Brightness4, Brightness7 } from '@mui/icons-material';
-
-
+import DrawerSections from './DrawerSections';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const Drawerr = ({
                 drawerWidth,
@@ -38,7 +33,6 @@ const Drawerr = ({
       
         <Drawer
           sx={{
-            // width: `${drawerWidth}px`,
             display: {xs: `${noneORblock}`, sm: "block", },
             flexShrink: 0,
             '& .MuiDrawer-paper': {
@@ -66,8 +60,6 @@ const Drawerr = ({
             
               <IconButton
                   onClick={() => {
-                    // localStorage.setItem("currentMode",
-                    //   myTheme.palette.mode === "dark" ? "light" : "dark")
                     localStorage.setItem("currentMode",
                       myTheme.palette.mode === "dark" ? "light" : "dark"
                     )
@@ -85,77 +77,13 @@ const Drawerr = ({
             </ListItem>
 
             <Divider />
+            <DrawerSections
+                currentLocation={currentLocation}
+                navigate={navigate}
+                myTheme={myTheme}
+                />
 
-
-              <ListItem
-                    disablePadding
-                    sx={{bgcolor : currentLocation.pathname === "/"
-                      ?
-                      // @ts-ignore
-                      myTheme.palette.favColor.main
-                      : null,
-                    }}
-                    >
-                <ListItemButton onClick={() => { navigate("/")}}>
-                  <ListItemIcon>
-                    <HomeIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Home" />
-                </ListItemButton>
-              </ListItem>
-            
-              <ListItem 
-                    disablePadding
-                    sx={{bgcolor : currentLocation.pathname === "/create"
-                      ?
-                      // @ts-ignore
-                      myTheme.palette.favColor.main
-                      : null,
-                    }}
-                    >
-                <ListItemButton onClick={() => navigate("/create")}>
-                  <ListItemIcon>
-                    <AddCircleOutlineIcon/>
-                  </ListItemIcon>
-                  <ListItemText primary="Create" />
-                </ListItemButton>
-              </ListItem>
-            
-            <ListItem
-                  disablePadding
-                  sx={{bgcolor : currentLocation.pathname === "/profile"
-                      ?
-                      // @ts-ignore
-                      myTheme.palette.favColor.main
-                      : null,
-                    }}
-                  >
-              <ListItemButton onClick={() => { navigate("profile")}}>
-                <ListItemIcon>
-                  <AccountCircleIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Profile" />
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem
-                    disablePadding
-                    sx={{bgcolor : currentLocation.pathname === "/setting"
-                      ?
-                      // @ts-ignore
-                      myTheme.palette.favColor.main
-                      : null,
-                    }}
-                    >
-              <ListItemButton onClick={() => { navigate("/settings")}}>
-                <ListItemIcon>
-                  <SettingsIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Settings" />
-              </ListItemButton>
-            </ListItem>
-            
-            <ListItem
+                <ListItem
                   disablePadding
                   sx={{bgcolor : currentLocation.pathname === "/logout"
                       ?
@@ -171,6 +99,7 @@ const Drawerr = ({
                 <ListItemText primary="Log out" />
               </ListItemButton>
             </ListItem>
+
 
           </List>
 

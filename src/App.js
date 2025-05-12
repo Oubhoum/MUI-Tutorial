@@ -11,12 +11,14 @@ import {
         Route,
         RouterProvider
       } from "react-router-dom";
+import PageNotFound from "pages/pageNotFound/pageNotFound";
 
 const router = createBrowserRouter (
   createRoutesFromElements (
     <Route path="/" element={<Root/>}>
       <Route index element={<Home/>}/>
       <Route path="create" element={<Create/>}/>
+      <Route path="*" element={<PageNotFound/>}/>
     </Route>
   )
 );
