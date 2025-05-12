@@ -10,7 +10,6 @@ const navItems = [
   { text: 'Create', path: '/create', icon: <AddCircleOutlineIcon /> },
   { text: 'Profile', path: '/profile', icon: <AccountCircleIcon /> },
   { text: 'Settings', path: '/settings', icon: <SettingsIcon /> },
-//   { text: 'Log out', path: '/logout', icon: <LogoutIcon /> },
 ];
 
 

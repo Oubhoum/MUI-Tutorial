@@ -3,7 +3,9 @@ import "./Create.css";
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { purple } from '@mui/material/colors';
-import { ChevronRight, Scale } from "@mui/icons-material";
+import { ChevronRight } from "@mui/icons-material";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const ColorButton = styled(Button)(({ theme }) => ({
@@ -16,8 +18,14 @@ const ColorButton = styled(Button)(({ theme }) => ({
 }));
 
 const Create = () => {
+
+  const [title, setTitle] = useState("");
+  const [price, setPrice] = useState(0);
+  const navigate = useNavigate();
+
   return (
     <Box
+          autoComplete="off"
          component="form"
          sx={{
               width : "380px"
@@ -25,6 +33,9 @@ const Create = () => {
          >
 
         <TextField
+          onChange={(eo) => {
+            setTitle(eo.target.value)
+          }}
           fullWidth
           label="Transaction Title"
           sx={{ mt: "22px", display : "block" }}
@@ -40,8 +51,11 @@ const Create = () => {
         />
 
         <TextField
+          onChange={(eo) => {
+            setPrice(Number(eo.target.value))
+          }}
           fullWidth
-          label="Transaction Title"
+          label=" Amount"
           sx={{ mt: "22px", display : "block" }}
           slotProps={{
             input: {
@@ -52,11 +66,28 @@ const Create = () => {
             },
           }}
           variant = "filled"
+
         />
 
         <ColorButton
           variant="contained"
           sx={{mt : "22px"}}
+          onClick={() => {
+            // if (price !== 0 && title !== "")
+            // {
+            // }
+            fetch("http://localhost:3100/mydata", {
+              method : 'POST',
+              headers : {
+                'Content-Type' : 'application/json'
+              },
+              body : JSON.stringify({price, title})
+            })
+            .then(() => { 
+              navigate("/");
+             });
+
+          }}
           >
           Submit
           <ChevronRight/>
