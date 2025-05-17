@@ -8,6 +8,7 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Box,
 } from '@mui/material';
 
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -29,8 +30,9 @@ const Drawerr = ({
   const currentLocation = useLocation();
 
   return (
-    <div>
-      
+
+    <Box component="nav">
+
         <Drawer
           sx={{
             display: {xs: `${noneORblock}`, sm: "block", },
@@ -103,8 +105,9 @@ const Drawerr = ({
           </List>
 
         </Drawer>
-      
-    </div>
+
+    </Box>
+
   )
 }
 

@@ -43,16 +43,21 @@ const Root = () => {
       <div>
   
         <Appbar
-              drawerWidth={drawerWidth}
-              showDrawer={showDrawer}
+            {...{
+              drawerWidth,
+              showDrawer
+            }}
               />
         <Drawerr
-              drawerType={drawerType} 
-              noneORblock={noneORblock}
-              setMyMode={setMyMode}
-              drawerWidth={drawerWidth}
-              hideDrawer={hideDrawer}
+        {...{
+          drawerType,
+          noneORblock,
+          setMyMode,
+          drawerWidth,
+          hideDrawer
+        }}
               />
+
         <Box
             // className='border'
             component="main"
