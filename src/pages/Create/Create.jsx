@@ -93,7 +93,6 @@ const Create = () => {
           <ChevronRight/>
         </ColorButton>
 
-
     </Box>
   )
 }

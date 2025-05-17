@@ -12,17 +12,33 @@ const Home = () => {
     fetch('http://localhost:3100/mydata')
     .then((res) => res.json())
     .then((data) => setmydata(data));
-  }, [])
+  }, [mydata])
 
-  // let totalPrice = mydata.reduce((sum, item) => sum + item.price, 0);
+  let totalPrice = 0; //mydata.reduce((sum, item) => sum + item.price, 0);
+
+
+
+  const handleDelete = (dt) => {
+                      fetch(`http://localhost:3100/mydata/${dt.id}`, {
+                        method : 'DELETE'
+                      });
+
+                      const newArray = mydata.filter((myObject) => { 
+                        return myObject.id !== dt.id;
+                       });
+                       
+                      setmydata(newArray);
+                    };
 
   return (
     <Box>
 
       {mydata.map(dt => {
 
-        return (
+        totalPrice += dt.price;
 
+        return (
+  
           <Paper sx={{
                   position : "relative",
                   width : "350px",
@@ -56,17 +72,14 @@ const Home = () => {
                   ${dt.price}
             </Typography>
 
-            <IconButton sx={{
+            <IconButton
+                  sx={{
                     position : "absolute",
                     top : "0",
                     right : "0",
                     mb : "2px"
                     }}
-                    onClick={() => {
-                      fetch(`http://localhost:3100/mydata/${dt.id}`, {
-                        method : 'DELETE'
-                      })
-                    }}                    
+                    onClick={() => handleDelete(dt)}
                     >
               <ClearIcon sx={{
                 fontSize : "20px"
@@ -75,17 +88,18 @@ const Home = () => {
           </Paper>
         )
       })}
-{/* 
-      { totalPrice &&
       
-        <Typography sx={{ mt: 3, fontWeight: 'bold' }}>
-           Total: ${totalPrice}
+        <Typography
+            mt="65px"
+            textAlign="center"
+            variant="h5"
+            sx={{ mt: 3, fontWeight: 'bold' }}
+            >
+           You spend : ${totalPrice}
         </Typography>
-      } */}
-
 
     </Box>
   )
-}
+};
 
-export default Home
+export default Home;
